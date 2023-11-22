@@ -1,0 +1,81 @@
+body{
+    display: flex;
+    justify-content: center;
+    background-color:  rgb(73, 22, 190);
+    margin-top: 25vh;
+    background: url('../image/pic3.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+.Portal{
+    border:  white 2px solid ;
+    border-radius: 10px;
+    height: 300px;
+    width: 300px;
+    padding: 20px;
+    background: transparent;
+    backdrop-filter: blur(10px);
+}
+
+.Portal h1{
+
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    color: black;
+}
+
+.Portal .input {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    
+
+    
+    
+}
+
+.Portal .input input{
+    width: 500px;
+    height: 40px;
+    border-radius: 10px;
+    border: none;
+}
+
+.Portal .submit{
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    
+
+}
+ .Portal .submit input{
+    width: 500px;
+    height: 40px;
+    background-color:  rgb(12, 125, 224);
+    border-radius: 10px;
+    border: none;
+    color: white;
+
+ }
+
+.submit input:hover{
+    background-color: rgb(222, 43, 225);
+    font-size: large;
+    letter-spacing: 1px;
+}
+
+.Register p{
+    font-size: small;
+    color: black;
+    display: flex;
+    justify-content: center;
+}
+
+.Register p a{
+    color: rgb(35, 35, 229);
+    margin-left: 10px;
+}

@@ -1,0 +1,162 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        form {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            max-width: 400px;
+            margin: auto;
+        }
+
+        label {
+            margin-top: 10px;
+        }
+
+        input, button {
+            margin-top: 5px;
+            padding: 10px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        .back {
+            margin-top: 15px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .back a {
+            color: #333;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+<?php
+session_start();
+include 'config.php';
+$id = $_POST['id'];
+
+$qry = "SELECT * FROM users WHERE id = $id";
+$result = mysqli_query($conn, $qry);
+$row = mysqli_fetch_array($result);
+?>
+
+<form action="edit_user.php" method="POST" enctype="multipart/form-data">
+
+<label for="firstname">First Name</label>
+    <input type="text" id="firstname" name="firstname" value="<?php echo $row['firstname']; ?>">
+
+    <label for="lastname">Last Name</label>
+    <input type="text" id="lastname" name="lastname" value="<?php echo $row['lastname']; ?>">
+
+    <label for="email">Email</label>
+    <input type="text" id="email" name="email" value="<?php echo $row['email']; ?>">
+
+    <label for="contact">Contact</label>
+    <input type="text" id="contact" name="contact" value="<?php echo $row['contact']; ?>">
+
+    <label for="name">Profile</label>
+    <input type="file" id="name" name="image">
+
+    <input type="hidden" name="id" value="<?php echo $id;?>">
+
+    <button type="submit" name="upload">Update</button>
+
+    <div class="back">
+        <a href="../user.php">Back to the User Page</a>
+    </div>
+
+</form>
+
+<?php
+if (isset($_POST['upload'])) {
+    $target = "../img/profile_image/" . basename($_FILES['image']['name']);
+
+    $firstname = $_POST['firstname'];
+    $lastname = $_POST['lastname'];
+    $email = $_POST['email'];
+    $contact = $_POST['contact'];
+    $image = $_FILES['image']['name'];
+
+    // Check if any required field is empty
+    if (empty($firstname) || empty($lastname) || empty($email) || empty($contact) || empty($image)) {
+        // Handle the case where a required field is empty
+        header("Location: ../user.php?error=Please fill out all fields");
+        exit();
+    }
+
+    // Update user data
+    $sql = "UPDATE users SET image_name = ?, firstname = ?, lastname = ?, email = ?, contact = ? WHERE id = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("sssssi", $image, $firstname, $lastname, $email, $contact, $id);
+
+
+    if ($stmt->execute()) {
+        move_uploaded_file($_FILES['image']['tmp_name'], $target);
+
+        $user_id = $_SESSION['user_id'];
+        $log_sql = "INSERT INTO user_log (user_id, activities) VALUES(?, 'Updated a row')";
+        $log_stmt = $conn->prepare($log_sql);
+        $log_stmt->bind_param("i", $user_id);
+        $log_stmt->execute();
+
+        $stmt->close();
+        $log_stmt->close();
+        $conn->close();
+
+        header("Location: ../user.php?updated=true");
+        exit();
+    } else {
+        // Handle the case where the update failed
+        header("Location: ../user.php?error=Error updating user data");
+        exit();
+    }
+}
+?>
+
+</body>
+</html>
+
+
+
+
+
+
+
+

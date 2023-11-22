@@ -1,0 +1,16 @@
+.count{
+  width: 400px;
+  height: 300;
+  border: solid blue 3px;
+  background-color:rgba(0, 26, 255, 0.76);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 5px;
+}
+.count div span{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: 500;
+}
