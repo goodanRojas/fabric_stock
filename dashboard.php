@@ -4,7 +4,7 @@
     include "includes/navbar.php";
 ?>
     <section class="dashboard">
-       
+       <!-- THis is a comment -->
         <div class="boxes">
             <h2>Total</h2>
             <div class="box1 box">
