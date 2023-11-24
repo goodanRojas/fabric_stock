@@ -25,20 +25,20 @@ include 'header.php';
         <div class="menu-items">
             <ul class="nav-links">
                 <li><a href="dashboard.php">
-                    <img src="./img/nav-icons/home.png" class="icon" alt="icon">
+                    <img src="./img/nav-icons/dashboard.png" class="icon" alt="icon">
                     <span class="link-name">Dashboard</span>
                 </a></li>
                 <li><a href="stock.php">
-                    <img src="./img/nav-icons/comment.png" class="icon" alt="icon">
+                    <img src="./img/nav-icons/stock.png" class="icon" alt="icon">
                     <span class="link-name">Stocks</span>
                 </a></li>
                 <li><a href="user.php">
-                    <img src="./img/nav-icons/group.png" class="icon" alt="icon">
+                    <img src="./img/nav-icons/user-list.png" class="icon" alt="icon">
                     <span class="link-name">User's List</span>
                 </a></li>
                 
                 <li><a href="profile.php">
-                    <img src="./img/nav-icons/group.png" class="icon" alt="icon">
+                    <img src="./img/nav-icons/account.png" class="icon" alt="icon">
                     <span class="link-name">Profile</span>
                 </a></li>
                 
