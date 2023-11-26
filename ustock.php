@@ -74,7 +74,7 @@
                             <tbody>
                                 <?php 
                                     $i = 1;
-                                    $qry = "SELECT * FROM fabric";
+                                    $qry = "SELECT * FROM fabric ORDER BY date_inserted DESC";
                                     $result = $conn->query($qry);
                                     
                                     // Check if the query was successful

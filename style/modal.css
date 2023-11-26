@@ -1,20 +1,10 @@
-button.editmodal{
-    padding: 10px 20px;
-    max-width: 100px;
-    max-height: 40px;
-    border: none;
-    border-radius: 5px;
-    background-color: rgb(28, 222, 28);
-    color: white;
-    cursor: pointer;
-}
-button.editmodal:hover{
-    border: solid black 1px;
-    background-color: rgb(5, 185, 5);
+.nav-links .open-button{
+  cursor: pointer;
 }
 
-button.editmodal:active{
-    border: solid black 1px;
-    background-color: rgb(145, 247, 145);
-    color: black;
+.modal{
+  position: relative;
+  top: 50%;
+  left: 50%;
+  
 }

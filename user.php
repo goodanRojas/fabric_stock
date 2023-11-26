@@ -73,7 +73,7 @@
                             <tbody>
                                 <?php 
                                     $i = 1;
-                                    $qry = "SELECT id, CONCAT(firstname,' ', lastname) AS name, email, contact, image_name, date_inserted FROM users";
+                                    $qry = "SELECT id, CONCAT(firstname,' ', lastname) AS name, email, contact, image_name, date_inserted FROM users ORDER BY date_inserted DESC";
                                     $result = $conn->query($qry);
                                     
                                     // Check if the query was successful
