@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="style/style.css" >
     <link rel="stylesheet" href="style/table.css">
     <link rel="stylesheet" href="./style/top.css">
+    <link rel="stylesheet" href="./style/livesearch.css">
     <link rel="stylesheet" href="./style/modal.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
  

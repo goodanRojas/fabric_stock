@@ -1,5 +1,6 @@
 <?php
 include "includes/config.php";
+include "includes/header.php";
 ?> 
 <style>
     
@@ -13,7 +14,7 @@ if (isset($_POST['input'])) {
 
    /*  $qry = "SELECT CONCAT(firstname, ' ', lastname) AS `name`, `id`, `gender`, `contact`, `email`, `date_created` FROM users WHERE firstname ILIKE '%{$input}%' OR lastname ILIKE '%{$input}%' OR `email` ILIKE '%{$input}%' OR `contact` ILIKE '%{$input}%' OR `gender` ILIKE '%{$input}%' OR `date_created` ILIKE '%{$input}%'";
  */
-    $qry = "SELECT  * FROM fabric WHERE type LIKE '%$input%' COLLATE utf8mb4_unicode_ci OR color LIKE '%$input%' COLLATE utf8mb4_unicode_ci OR `price` LIKE '%$input%' COLLATE utf8mb4_unicode_ci OR `current_stock_address` LIKE '%$input%' COLLATE utf8mb4_unicode_ci OR `image_name` LIKE '%$input%' COLLATE utf8mb4_unicode_ci OR `date_inserted` LIKE '%$input%' COLLATE utf8mb4_unicode_ci OR `date_updated` LIKE '%$input%' COLLATE utf8mb4_unicode_ci";
+    $qry = "SELECT  * FROM fabric WHERE type LIKE '%$input%' COLLATE utf8mb4_unicode_ci OR color LIKE '%$input%' COLLATE utf8mb4_unicode_ci OR `price` LIKE '%$input%' COLLATE utf8mb4_unicode_ci OR `current_stock_address` LIKE '%$input%' COLLATE utf8mb4_unicode_ci OR `image_name` LIKE '%$input%' COLLATE utf8mb4_unicode_ci OR `date_inserted` LIKE '%$input%' COLLATE utf8mb4_unicode_ci OR `date_updated` LIKE '%$input%' COLLATE utf8mb4_unicode_ci ORDER BY date_inserted DESC";
 
     $result = mysqli_query($conn, $qry);
     if ($result) {

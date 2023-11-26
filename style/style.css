@@ -121,19 +121,20 @@ button.add_fabric:hover{
 
 
 footer {
- /*    width: 1020px;
-    height: 50px;
+    width: 100%;
+
+    padding: 20px 0;
     background-color: #fff;
-    z-index: 9999;
-   
+    z-index: 8;
     display: flex;
     font-weight: 500;
     align-items: center;
     justify-content: center;
-    position: sticky;
-    bottom: -100px;
-    left: 250px;
-    box-shadow: 5px 10px 8px #888888; */
+    position: fixed;
+    bottom: 0;
+    right: 0;
+   
+  
 
 }
 
@@ -212,6 +213,7 @@ nav{
     background-color: var(--panel-color);
     border-right: 1px solid var(--border-color);
     transition: var(--tran-05);
+    z-index: 9;
 }
 nav.close{
     width: 73px;
@@ -251,6 +253,7 @@ nav .menu-items{
 }
 .menu-items li{
     list-style: none;
+    cursor: pointer;
 }
 .menu-items li a{
     display: flex;
