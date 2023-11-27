@@ -1,10 +1,101 @@
-
 <?php
-    include "includes/header.php";
-    include "includes/unavbar.php";
-
-    
+include 'includes/config.php';
+session_start();
+$user_id = $_SESSION['user_id'];
+$image = "SELECT image_name FROM users where id = $user_id";
+$result_image = mysqli_query($conn, $image);
+$row1 = $result_image->fetch_assoc();
 ?>
+
+<!DOCTYPE html>
+<!-- Coding By CodingNepal - codingnepalweb.com -->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!----======== CSS ======== -->
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style/table.css">
+    <link rel="stylesheet" href="./style/top.css">
+    <link rel="stylesheet" href="./style/livesearch.css">
+    <link rel="stylesheet" href="./style/modal.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+
+    <!----===== Iconscout CSS ===== -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>Admin Dashboard Panel</title>
+</head>
+
+<body>
+
+
+    <nav>
+        <div class="nav-profile-card">
+            <span class="nav-profile-image">
+                <img src="img/profile_image/<?php echo $row1['image_name']; ?>" width='100' height='100'>
+            </span>
+
+            <span class="nav-profile-name">
+                <?php
+                $qry = "SELECT CONCAT(firstname, ' ' , lastname) AS name from users where id = $user_id";
+                $result = mysqli_query($conn, $qry);
+                $row = $result->fetch_assoc();
+                echo $row['name'];
+                ?>
+            </span>
+        </div>
+
+        <div class="menu-items">
+            <ul class="nav-links">
+                <li><a href="udashboard.php">
+                        <img src="./img/nav-icons/dashboard.png" class="icon" alt="icon">
+                        <span class="link-name">Dashboard</span>
+                    </a></li>
+                <li><a href="ustock.php">
+                        <img src="./img/nav-icons/stock.png" class="icon" alt="icon">
+                        <span class="link-name">Stocks</span>
+                    </a></li>
+
+
+                <li><a href="uprofile.php">
+                        <img src="./img/nav-icons/account.png" class="icon" alt="icon">
+                        <span class="link-name">Profile</span>
+                    </a></li>
+
+                <li class="open-button">
+                    <i class="uil uil-signout"></i>
+                    <span class="link-name" id="openModalBtn">Logout</span>
+                </li>
+
+
+            </ul>
+
+
+
+
+        </div>
+    </nav>
+    <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+
+            <p> Do you really wanna log out?</p>
+            <div class="modal-choice">
+                <span class="close btn" id="closeModalBtn">No</span>
+                <a class="btn" href="index.php">Yes</a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
     <section class="dashboard">
         <div class="top">
                 
@@ -74,7 +165,7 @@
                             <tbody>
                                 <?php 
                                     $i = 1;
-                                    $qry = "SELECT * FROM fabric";
+                                    $qry = "SELECT * FROM fabric ORDER BY date_inserted DESC";
                                     $result = $conn->query($qry);
                                     
                                     // Check if the query was successful
@@ -139,13 +230,10 @@
 
 
 
-<?php 
-        include "includes/footer.php";
-        include "includes/scripts.php";
-       /* TODO mag himo ta og export logs  if (isset($_GET["success"])) {
-            $sql = "INSERT INTO exports";
-        } */
-   ?>
+    <footer>
+        Created by: FSCS
+
+    </footer>
    
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script src="../jquery-3.7.1.min.js"></script>
@@ -251,3 +339,27 @@ $(document).ready(function(){
 </body>
 </html>
 
+<script>
+    // Get the modal and the buttons
+    var modal = document.getElementById("myModal");
+    var openModalBtn = document.getElementById("openModalBtn");
+    var closeModalBtn = document.getElementById("closeModalBtn");
+
+    // Open the modal
+    openModalBtn.onclick = function () {
+        modal.style.display = "block";
+    };
+
+    // Close the modal
+    closeModalBtn.onclick = function () {
+        modal.style.display = "none";
+    };
+
+    // Close the modal if the user clicks outside of it
+    window.onclick = function (event) {
+        if (event.target === modal) {
+            modal.style.display = "none";
+        }
+    };
+
+</script>

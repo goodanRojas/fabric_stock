@@ -13,7 +13,7 @@
 
             <?php include('includes/config.php');
                 include ('includes/header.php');
-               $users_query = $conn->query("SELECT CONCAT(users.firstname, ' ', users.lastname) as name, user_log.date_inserted, user_log.activities FROM user_log LEFT JOIN users ON user_log.user_id = users.id ORDER BY user_log.id DESC");
+               $users_query = $conn->query("SELECT CONCAT(users.firstname, ' ', users.lastname) as name, user_log.date_inserted, user_log.activities FROM user_log LEFT JOIN users ON user_log.user_id = users.id ORDER BY user_log.date_inserted DESC");
                ?>
 
 
