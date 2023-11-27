@@ -91,6 +91,7 @@ $row = mysqli_fetch_array($result);
     <label for="contact">Contact</label>
     <input type="text" id="contact" name="contact" value="<?php echo $row['contact']; ?>">
 
+    <!-- mao ne ako ge edit na side [athena] -->
     <label for="Password">Password</label>
     <input type="text" id="Password" name="password" value="<?php echo $row['pwd']; ?>">
 
