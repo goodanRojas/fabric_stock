@@ -29,8 +29,12 @@ $row1 = $result_image->fetch_assoc();
 
     <style>
         .dashboard {
-            margin-top: 20px;
-            background-color: #3498db;
+            height: 100vh;
+            /* Set the height to 100% of the viewport height */
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
             /* Dark Blue Background */
             color: #fff;
             /* White Text Color */
@@ -43,20 +47,49 @@ $row1 = $result_image->fetch_assoc();
         .profile-card {
             background-color: #ffffff;
             /* White Background */
-            border: 2px solid #66b3ff;
-            /* Light Blue Border */
+            border: none;
+            width: 50%;
+            /* Remove the border */
             border-radius: 10px;
             padding: 20px;
             box-shadow: 0 4px 8px rgba(0, 51, 102, 0.1);
             /* Light Blue Shadow */
+            text-align: center;
+            /* Center the content */
+            margin-top: 20px;
         }
 
+        .personal-logs {
+
+
+            background-color: #ffffff;
+            /* White Background */
+            border: none;
+            width: 50%;
+            /* Remove the border */
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 51, 102, 0.1);
+            /* Light Blue Shadow */
+            text-align: center;
+            /* Center the content */
+            margin-top: 20px;
+            height: 100vh;
+            /* Set default height to 100% of the viewport height */
+            overflow-y: auto;
+            /* Add a vertical scrollbar if content overflows */
+        }
+
+
         .profile-image img {
-            border: 2px solid #66b3ff;
-            /* Light Blue Border */
+            border: 2px solid blue;
+            /* Remove the border */
+            width: 170px;
+            height: 170px;
             border-radius: 50%;
             /* Make it a circle */
         }
+
 
         .profile-name {
             color: #003366;
@@ -140,7 +173,10 @@ $row1 = $result_image->fetch_assoc();
                         <span class="link-name">User's List</span>
                     </a></li>
 
-                <li><a href="profile.php">
+                <li style="background-color:#4563c47b;
+                            border-radius: 0 20px 20px 0;
+                            padding: 3px 7px 3px 5px;
+                            "><a href="profile.php">
                         <img src="./img/nav-icons/account.png" class="icon" alt="icon">
                         <span class="link-name">Profile</span>
                     </a></li>
@@ -219,6 +255,34 @@ $row1 = $result_image->fetch_assoc();
                 <input type='submit' class='table-btn' value='Update'>
             </form>
         </div>
+
+
+        <div class="personal-logs">
+            <h2 class="text">Recent Activities</h2>
+            <table>
+               
+                <?php
+                $qry = "SELECT * FROM user_log WHERE user_id = $user_id";
+                $result = mysqli_query($conn, $qry);
+                if ($row = mysqli_fetch_assoc($result) > 0) {
+                    ?>
+                    <tr>
+                        <th>Activities</th>
+                        <th>Date</th>
+                    </tr>
+                    <?php
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        echo "<tr>";
+                        echo "<td>" . $row["activities"] . "</td>";
+                        echo "<td>" . $row["date_inserted"] . "</td>";
+                    }
+                } else {
+                    echo "<p class='text'>No recent activities </p>";
+                }
+                ?>
+            </table>
+        </div>
+
     </section>
 
     <footer>

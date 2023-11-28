@@ -1,6 +1,5 @@
 <?php
 include "includes/config.php";
-include "includes/header.php";
 ?> 
 <style>
     
@@ -51,7 +50,20 @@ if (isset($_POST['input'])) {
             echo '</tbody>';
             echo '</table>';
         } else {
-            echo "<h5>No data found!</h5>";
+            echo '<table class="table table-bordered table-stripped"  id="data-table">';
+            echo '<tr>';
+            echo '<th>#</th>';
+            echo '<th>Type</th>';
+            echo '<th>Color</th>';
+            echo '<th>Price</th>';
+            echo '<th>Address</th>';
+            echo '<th>image_name</th>';
+            echo '<th colspan="2" >Action</th>';
+            echo '</tr>';
+            echo '<tr>';
+            echo "<td colspan='7'><h5>No data found!</h5> </td>";
+            echo '</tr>';
+            echo '</table>';
         }
     } else {
         echo "Query failed: " . $conn->error; // Handle database query errors

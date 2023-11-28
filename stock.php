@@ -55,7 +55,11 @@ $row1 = $result_image->fetch_assoc();
                         <img src="./img/nav-icons/dashboard.png" class="icon" alt="icon">
                         <span class="link-name">Dashboard</span>
                     </a></li>
-                <li><a href="stock.php">
+                <li
+                style="background-color:#4563c47b;
+                            border-radius: 0 20px 20px 0;
+                            padding: 3px 7px 3px 5px;
+                            "><a href="stock.php">
                         <img src="./img/nav-icons/stock.png" class="icon" alt="icon">
                         <span class="link-name">Stocks</span>
                     </a></li>
@@ -102,7 +106,7 @@ $row1 = $result_image->fetch_assoc();
     <section class="dashboard">
         <div class="top">
                 
-                    <input type="text" class="search-box"id="live-search" name="search" autocomplete="off" placeholder="Search fabric">
+                    <input type="text" class="search-box" id="live-search" name="search" autocomplete="off" placeholder="Search fabric">
 
                     <div class="count">
                        <div>
@@ -314,6 +318,8 @@ $(document).ready(function(){
 
 </script>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+
 
 <script>
     $(document).ready(function() {

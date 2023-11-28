@@ -1,6 +1,6 @@
 <?php
 include 'config.php';
-include 'header.php';   
+   
 
 $id = intval($_POST["id"]);
 $qry = "SELECT * FROM fabric where id = $id";
@@ -141,7 +141,7 @@ if ($result && $result->num_rows > 0)
             }
       
                 
-                $log_sql = "INSERT INTO user_log (user_id, activities) VALUES('$user_id','Updated a row')";
+                $log_sql = "INSERT INTO user_log (user_id, activities) VALUES('$user_id','Updated fabric row id  $id')";
                 $conn->query($log_sql);
                 $conn->close();
     

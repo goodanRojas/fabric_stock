@@ -18,7 +18,7 @@ if (isset($_SESSION['user_id'])) {
 
         // Execute the query
         if ($conn->query($sql) === TRUE) {
-            $log_sql = "INSERT INTO user_log (user_id, activities) VALUES('$user_id','Deleted a row')";
+            $log_sql = "INSERT INTO user_log (user_id, activities) VALUES('$user_id','Deleted user id $rowId')";
             $conn->query($log_sql);
             echo "Row with ID $rowId deleted successfully from table $tableName";
             header("Location:../user.php?deleted=true");

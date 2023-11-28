@@ -100,12 +100,15 @@ $row1 = $result_image->fetch_assoc();
         <!-- THis is a comment -->
         <div class="boxes">
             <h2>Total</h2>
-            <div class="box1 box">
-                <span class="text">Users</span>
-                <a href="user.php">
+
+
+
+            <div class="box2 box">
+                <span class="text">Fabric</span>
+                <a href="ustock.php">
                     <span class="number">
                         <?php
-                        $query = "SELECT COUNT(*) FROM users";
+                        $query = "SELECT COUNT(*) FROM `fabric`";
                         $result = mysqli_query($conn, $query);
                         $row = mysqli_fetch_array($result);
                         $count = $row[0];
@@ -116,30 +119,20 @@ $row1 = $result_image->fetch_assoc();
             </div>
 
 
-            <div class="box2 box">
-                <span class="text">Fabric</span>
-                <span class="number">
-                    <?php
-                    $query = "SELECT COUNT(*) FROM `fabric`";
-                    $result = mysqli_query($conn, $query);
-                    $row = mysqli_fetch_array($result);
-                    $count = $row[0];
-                    echo $count;
-                    ?>
-                </span>
-            </div>
 
-            <div class="box3 box">
-                <span class="text">User Logs</span>
-                <span class="number">
-                    <?php
-                    $query = "SELECT COUNT(*) FROM user_log";
-                    $result = mysqli_query($conn, $query);
-                    $row = mysqli_fetch_array($result);
-                    $count = $row[0];
-                    echo $count;
-                    ?>
-                </span>
+            <div class="box1 box">
+                <span class="text">Recent Exports</span>
+                <a href="ustock.php">
+                    <span class="number">
+                        <?php
+                        $query = "SELECT COUNT(*) FROM exports";
+                        $result = mysqli_query($conn, $query);
+                        $row = mysqli_fetch_array($result);
+                        $count = $row[0];
+                        echo $count;
+                        ?>
+                    </span>
+                </a>
             </div>
 
 
