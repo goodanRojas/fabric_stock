@@ -91,6 +91,10 @@ $row = mysqli_fetch_array($result);
     <label for="contact">Contact</label>
     <input type="text" id="contact" name="contact" value="<?php echo $row['contact']; ?>">
 
+     <!-- nag add ug input password(dona) -->
+     <label for="Password">Password</label>
+     <input type="text" id="Password" name="password" value="<?php echo $row['pwd']; ?>">
+
     <label for="name">Profile</label>
     <input type="file" id="name" name="image">
 
@@ -112,19 +116,20 @@ if (isset($_POST['upload'])) {
     $lastname = $_POST['lastname'];
     $email = $_POST['email'];
     $contact = $_POST['contact'];
+    $pass = $_POST['password'];
     $image = $_FILES['image']['name'];
 
     // Check if any required field is empty
-    if (empty($firstname) || empty($lastname) || empty($email) || empty($contact) || empty($image)) {
+    if (empty($firstname) || empty($lastname) || empty($email) || empty($contact) || empty($image)|| empty($pass)) {
         // Handle the case where a required field is empty
         header("Location: ../user.php?error=Please fill out all fields");
         exit();
     }
 
     // Update user data
-    $sql = "UPDATE users SET image_name = ?, firstname = ?, lastname = ?, email = ?, contact = ? WHERE id = ?";
+    $sql = "UPDATE users SET image_name = ?, firstname = ?, lastname = ?, email = ?, contact = ?, pwd = ? WHERE id = ?";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("sssssi", $image, $firstname, $lastname, $email, $contact, $id);
+    $stmt->bind_param("ssssssi", $image, $firstname, $lastname, $email, $contact, $pass, $id);
 
 
     if ($stmt->execute()) {
