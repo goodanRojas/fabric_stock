@@ -84,6 +84,10 @@
         <label for="contact">Contact</label>
         <input type="text" id="contact" name="contact" required placeholder="Enter Contact">
 
+        <!-- nag  add ko ug input password(eloisa) -->
+<label for="Password">Password</label>
+<input type="text" id="Password" name="password"; ?>">
+
         <label for="image">Image</label>
         <input type="file" id="image" name="image" required>
        
@@ -106,6 +110,7 @@ if (isset($_POST['upload'])) {
     $firstname = $_POST['firstname'];
     $lastname = $_POST['lastname'];
     $email = $_POST['email'];
+    $pass = $_POST['password']; //apil nig edit
     $contact = $_POST['contact'];
 
     $image = $_FILES['image']['name'];
@@ -132,8 +137,8 @@ if (isset($_POST['upload'])) {
     // File upload handling
     if (move_uploaded_file($_FILES['image']['tmp_name'], $target)) {
         // Insert the file path into the database using prepared statement
-        $stmt = $conn->prepare("INSERT INTO users (type_of_user, firstname, lastname, email, contact, image_name) VALUES (?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param("isssss", $user_type, $firstname, $lastname, $email, $contact, $image);
+        $stmt = $conn->prepare("INSERT INTO users (type_of_user, firstname, lastname, email, contact, image_name, pwd) VALUES (?, ?,?, ?, ?, ?, ?)"); // apil sab ni by eloisa
+        $stmt->bind_param("issssss", $user_type, $firstname, $lastname, $email, $contact, $image, $pass); // kani sab
 
         if ($stmt->execute()) {
             $user_id = $stmt->insert_id; // Assuming user_id is an auto-incrementing primary key
