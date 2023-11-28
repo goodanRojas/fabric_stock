@@ -84,6 +84,8 @@
         <label for="contact">Contact</label>
         <input type="text" id="contact" name="contact" required placeholder="Enter Contact">
 
+        
+
         <label for="image">Image</label>
         <input type="file" id="image" name="image" required>
        

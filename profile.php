@@ -252,7 +252,7 @@ $row1 = $result_image->fetch_assoc();
 
             <form action="includes/edit_user.php" method="post" class="submit">
                 <input type='hidden' name='id' value='<?php echo $user_id ?>'>
-                <input type='submit' class='table-btn' value='Update'>
+                <input type='submit' class='table-btn'  onclick="update_profile(<?php echo $row1['id']; ?>)" value='Update'>
             </form>
         </div>
 
