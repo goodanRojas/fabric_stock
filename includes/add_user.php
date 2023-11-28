@@ -83,7 +83,7 @@
 
         <label for="contact">Contact</label>
         <input type="text" id="contact" name="contact" required placeholder="Enter Contact">
-<!-- Added a pass input -->
+
         <label for="pass">Password</label>
         <input type="text" id="pass" name="pass" required placeholder="Enter Password">
 
