@@ -91,7 +91,7 @@ $row = mysqli_fetch_array($result);
     <label for="contact">Contact</label>
     <input type="text" id="contact" name="contact" value="<?php echo $row['contact']; ?>">
 
-     <!-- nag add ug input password para sa (dona) -->
+     <!-- nag add ug input password(dona) -->
      <label for="Password">Password</label>
      <input type="text" id="Password" name="password" value="<?php echo $row['pwd']; ?>">
 
@@ -116,7 +116,7 @@ if (isset($_POST['upload'])) {
     $lastname = $_POST['lastname'];
     $email = $_POST['email'];
     $contact = $_POST['contact'];
-    $pass = $_POST['password']; // 
+    $pass = $_POST['password'];
     $image = $_FILES['image']['name'];
 
     // Check if any required field is empty
