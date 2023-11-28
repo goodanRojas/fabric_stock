@@ -84,7 +84,7 @@
         <label for="contact">Contact</label>
         <input type="text" id="contact" name="contact" required placeholder="Enter Contact">
 <!-- dadad -->
-         <!-- added password input (eloisa) -->
+         <!--  added password input (eloisa) -->
          <label for="Password">Password</label>
     <input type="text" id="Password" name="password"> 
 
