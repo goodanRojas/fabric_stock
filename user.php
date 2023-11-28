@@ -59,7 +59,12 @@ $row1 = $result_image->fetch_assoc();
                         <img src="./img/nav-icons/stock.png" class="icon" alt="icon">
                         <span class="link-name">Stocks</span>
                     </a></li>
-                <li><a href="user.php">
+                <li style="background-color:#4563c47b;
+                            border-radius: 0 20px 20px 0;
+                            padding: 3px 7px 3px 5px;
+                            "
+                    
+                ><a href="user.php">
                         <img src="./img/nav-icons/user-list.png" class="icon" alt="icon">
                         <span class="link-name">User's List</span>
                     </a></li>
@@ -106,23 +111,7 @@ $row1 = $result_image->fetch_assoc();
                 
                     <input type="text" class="search-box" id="live-search" name="search" autocomplete="off" placeholder="Search User">
 
-                    <div class="count">
-                       <div>
-                            <span class="text">Total users</span>
-                       </div>
-                        <div>
-                            <span class="number">
-                                <?php 
-                                    
-                                    $query = "SELECT COUNT(*) FROM users";
-                                    $result = mysqli_query($conn, $query);
-                                    $row = mysqli_fetch_array($result);
-                                    $count = $row[0];
-                                    echo $count;
-                                ?>
-                            </span>
-                        </div>
-                    </div>   
+                    
                     <div>
                         <form action="includes/add_user.php" method="post"> <!-- DEREE NATA -->
                             <button class="add_fabric" type="submit">Add</button>
@@ -140,10 +129,24 @@ $row1 = $result_image->fetch_assoc();
                 <!-- Human ana mag himo ka og ajax para alid an ang table depende sa result sa search bar -->
         </div>
 
-                    <ul class="table_nav" id="table_nav">
-                        <li><a href="#" id="open_lists" class="fabric_list links">User's Lists</a></li>
-
-                    </ul>
+        <div class="count">
+                       <div>
+                            <span class="text">Total users</span>
+                       </div>
+                        <div>
+                            <span class="number">
+                                <?php 
+                                    
+                                    $query = "SELECT COUNT(*) FROM users";
+                                    $result = mysqli_query($conn, $query);
+                                    $row = mysqli_fetch_array($result);
+                                    $count = $row[0];
+                                    echo $count;
+                                ?>
+                            </span>
+                        </div>
+                    </div>   
+                 
 
         <div class="dash-content">
             <div class="overview">
@@ -186,12 +189,12 @@ $row1 = $result_image->fetch_assoc();
                                             echo "<td>" . $row['date_inserted'] . "</td>";
                                             echo "<td><form method='post' action='includes/user-delete.php'>
                                             <input type='hidden' name='id' value='" . $row['id'] . "'>
-                                            <input type='submit' class='table_btn btn-safe' name='delete_row' value='Delete'>
+                                            <input type='submit' class='table_btn btn-danger' name='delete_row' value='Delete'>
                                             </form></td>";
                                             
                                             echo "<td><form method='post' action='includes/edit_user_list.php'>
                                                     <input type='hidden' name='id' value='" . $row['id'] . "'>
-                                                    <input type='submit' class='table_btn' value='Update'>
+                                                    <input type='submit' class='table_btn btn-safe' value='Update'>
                                                 </form> </td>";
 
                                             

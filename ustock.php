@@ -24,6 +24,8 @@ $row1 = $result_image->fetch_assoc();
     <link rel="stylesheet" href="./style/modal.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
 
+    
+
     <!----===== Iconscout CSS ===== -->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -296,6 +298,7 @@ $(document).ready(function(){
                 success: function (data) {
                     $("#searchresult").html(data);
                     $("#data-table").hide();
+                    $("#export-table").hide();
                     $("#searchresult").show()
                    
                 }

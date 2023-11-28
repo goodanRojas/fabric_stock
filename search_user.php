@@ -68,7 +68,20 @@ if (isset($_POST['input'])) {
             echo '</tbody>';
             echo '</table>';
         } else {
-            echo "<h5>No data found!</h5>";
+            echo '<table class="table table-bordered table-stripped"  id="data-table">';
+            echo '<tr>';
+            echo '<th>#</th>';
+            echo '<th>Name</th>';
+            echo '<th>Email</th>';
+            echo '<th>Contact</th>';
+            echo '<th>Profile</th>';
+            echo '<th>Joined date</th>';
+            echo '<th colspan="2" >Action</th>';
+            echo '</tr>';
+            echo '<tr>';
+            echo "<td colspan='7'> <h5>No data found!</h5> </td>";
+            echo '</tr>';
+            echo '</table';
         }
     } else {
         echo "Query failed: " . $conn->error; // Handle database query errors

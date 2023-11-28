@@ -121,7 +121,7 @@
         
         // Insert the file path into the database
         
-        $log_sql = "INSERT INTO user_log (user_id, activities) VALUES('$user_id','Added a row')";
+        $log_sql = "INSERT INTO user_log (user_id, activities) VALUES('$user_id','Added a fabric')";
         $conn->query($log_sql);
         if ($result) {
             // Insert successful

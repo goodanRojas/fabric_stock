@@ -51,7 +51,8 @@ $row1 = $result_image->fetch_assoc();
 
         <div class="menu-items">
             <ul class="nav-links">
-                <li><a href="dashboard.php">
+                <li 
+                ><a href="dashboard.php">
                         <img src="./img/nav-icons/dashboard.png" class="icon" alt="icon">
                         <span class="link-name">Dashboard</span>
                     </a></li>
@@ -90,7 +91,7 @@ $row1 = $result_image->fetch_assoc();
             <p> Do you really wanna log out?</p>
             <div class="modal-choice">
                 <span class="close btn" id="closeModalBtn">No</span>
-               <a class="btn"href="index.php">Yes</a>
+                <a class="btn" href="index.php">Yes</a>
 
             </div>
 
@@ -103,9 +104,10 @@ $row1 = $result_image->fetch_assoc();
         <!-- THis is a comment -->
         <div class="boxes">
             <h2>Total</h2>
-            <div class="box1 box">
-                <span class="text">Users</span>
-                <a href="user.php">
+            <a href="user.php">
+                <div class="box1 box">
+                    <span class="text">Users</span>
+
                     <span class="number">
                         <?php
                         $query = "SELECT COUNT(*) FROM users";
@@ -115,36 +117,54 @@ $row1 = $result_image->fetch_assoc();
                         echo $count;
                         ?>
                     </span>
-                </a>
-            </div>
 
+                </div>
+            </a>
 
-            <div class="box2 box">
-                <span class="text">Fabric</span>
-                <span class="number">
-                    <?php
-                    $query = "SELECT COUNT(*) FROM `fabric`";
-                    $result = mysqli_query($conn, $query);
-                    $row = mysqli_fetch_array($result);
-                    $count = $row[0];
-                    echo $count;
-                    ?>
-                </span>
-            </div>
+            <a href="stock.php">
+                <div class="box2 box">
+                    <span class="text">Fabric</span>
+                    <span class="number">
+                        <?php
+                        $query = "SELECT COUNT(*) FROM `fabric`";
+                        $result = mysqli_query($conn, $query);
+                        $row = mysqli_fetch_array($result);
+                        $count = $row[0];
+                        echo $count;
+                        ?>
+                    </span>
+                </div>
+            </a>
 
-            <div class="box3 box">
-                <span class="text">User Logs</span>
-                <span class="number">
-                    <?php
-                    $query = "SELECT COUNT(*) FROM user_log";
-                    $result = mysqli_query($conn, $query);
-                    $row = mysqli_fetch_array($result);
-                    $count = $row[0];
-                    echo $count;
-                    ?>
-                </span>
-            </div>
+            <a href="stock.php">
+                <div class="box3 box">
+                    <span class="text">User Logs</span>
+                    <span class="number">
+                        <?php
+                        $query = "SELECT COUNT(*) FROM user_log";
+                        $result = mysqli_query($conn, $query);
+                        $row = mysqli_fetch_array($result);
+                        $count = $row[0];
+                        echo $count;
+                        ?>
+                    </span>
+                </div>
+            </a>
 
+            <a href="stock.php">
+                <div class="box3 box">
+                    <span class="text">Exports</span>
+                    <span class="number">
+                        <?php
+                        $query = "SELECT COUNT(*) FROM exports";
+                        $result = mysqli_query($conn, $query);
+                        $row = mysqli_fetch_array($result);
+                        $count = $row[0];
+                        echo $count;
+                        ?>
+                    </span>
+                </div>
+            </a>
 
 
         </div>
