@@ -268,6 +268,7 @@ $row1 = $result_image->fetch_assoc();
 
 
             <input type='submit' class='table-btn' onclick='openUpdate(<?php $row1["id"] ?>)' value='Update'>
+            <>
 
         </div>
 

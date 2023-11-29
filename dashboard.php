@@ -52,6 +52,10 @@ $row1 = $result_image->fetch_assoc();
         <div class="menu-items">
             <ul class="nav-links">
                 <li 
+                style="background-color:#4563c47b;
+                            border-radius: 0 20px 20px 0;
+                            padding: 3px 7px 3px 5px;
+                            "
                 ><a href="dashboard.php">
                         <img src="./img/nav-icons/dashboard.png" class="icon" alt="icon">
                         <span class="link-name">Dashboard</span>
