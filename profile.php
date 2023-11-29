@@ -59,6 +59,20 @@ $row1 = $result_image->fetch_assoc();
             margin-top: 20px;
         }
 
+        .profile-card .table-btn{
+            background-color: #3498db;
+            /* Dark Blue Button Background */
+            color: #fff;
+            /* White Text Color */
+            padding: 10px 15px;
+            /* Add padding to the button */
+            border: none;
+            /* Remove button border */
+            border-radius: 5px;
+            /* Add button border-radius */
+            cursor: pointer;
+            /* Change cursor to pointer on hover */
+        }
         .personal-logs {
 
 
@@ -131,6 +145,7 @@ $row1 = $result_image->fetch_assoc();
             cursor: pointer;
             /* Change cursor to pointer on hover */
         }
+        
     </style>
 
 
@@ -250,17 +265,17 @@ $row1 = $result_image->fetch_assoc();
                 </div>
             </div>
 
-            <form action="includes/edit_user.php" method="post" class="submit">
-                <input type='hidden' name='id' value='<?php echo $user_id ?>'>
-                <input type='submit' class='table-btn'  onclick="update_profile(<?php echo $row1['id']; ?>)" value='Update'>
-            </form>
+
+
+            <input type='submit' class='table-btn' onclick='openUpdate(<?php $row1["id"] ?>)' value='Update'>
+
         </div>
 
 
         <div class="personal-logs">
             <h2 class="text">Recent Activities</h2>
             <table>
-               
+
                 <?php
                 $qry = "SELECT * FROM user_log WHERE user_id = $user_id";
                 $result = mysqli_query($conn, $qry);
