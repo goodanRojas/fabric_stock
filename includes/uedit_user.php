@@ -79,7 +79,7 @@
     $row = mysqli_fetch_array($result);
     ?>
 
-    <form action="edit_user.php" method="POST" enctype="multipart/form-data">
+    <form action="uedit_user.php" method="POST" enctype="multipart/form-data">
 
         <label for="firstname">First Name</label>
         <input type="text" id="firstname" required name="firstname" value="<?php echo $row['firstname']; ?>">
@@ -153,7 +153,7 @@
             exit();
         } else {
             // Handle the case where the update failed
-            header("Location: ../profile.php?error=Error updating user data");
+            header("Location: ../uprofile.php?error=Error updating user data");
             exit();
         }
     }

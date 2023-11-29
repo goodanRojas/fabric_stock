@@ -23,7 +23,24 @@ $row1 = $result_image->fetch_assoc();
     <link rel="stylesheet" href="./style/livesearch.css">
     <link rel="stylesheet" href="./style/modal.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <style>
+        .table_btn.btn-danger{
+    background-color: gainsboro;
+}
 
+
+.table_btn.btn-danger:hover{
+    background-color: red;
+}
+.table_btn.btn-safe{
+    background-color: gainsboro;
+}
+
+
+.table_btn.btn-safe:hover{
+    background-color: rgb(0, 255, 21);
+}
+    </style>
     <!----===== Iconscout CSS ===== -->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -189,12 +206,12 @@ $row1 = $result_image->fetch_assoc();
                                             echo "<td> <img src='img/web/".$row['image_name']."' class='fabric_image'> </td>";
                                             echo "<td><form method='post' action='includes/fabric-delete.php'>
                                             <input type='hidden' name='id' value='" . $row['id'] . "'>
-                                            <input type='submit' class='table_btn btn-safe' name='delete_row' value='Delete'>
+                                            <input type='submit' class='table_btn btn-danger' name='delete_row' value='Delete'>
                                             </form></td>";
                                             
                                             echo "<td><form method='post' action='includes/edit_fabric.php'>
                                                     <input type='hidden' name='id' value='" . $row['id'] . "'>
-                                                    <input type='submit' class='table_btn' value='Update'>
+                                                    <input type='submit' class='table_btn btn-safe' value='Update'>
                                                 </form> </td>";
 
                                             

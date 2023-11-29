@@ -84,10 +84,6 @@
         <label for="contact">Contact</label>
         <input type="text" id="contact" name="contact" required placeholder="Enter Contact">
 
-        <!-- nag  add ko ug input password(eloisa) -->
-<label for="Password">Password</label>
-<input type="text" id="Password" name="password"; ?>">
-
         <label for="image">Image</label>
         <input type="file" id="image" name="image" required>
        
