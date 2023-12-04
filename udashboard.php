@@ -51,7 +51,12 @@ $row1 = $result_image->fetch_assoc();
 
         <div class="menu-items">
             <ul class="nav-links">
-                <li><a href="udashboard.php">
+                <li
+                style="background-color:#4563c47b;
+                            border-radius: 0 20px 20px 0;
+                            padding: 3px 7px 3px 5px;
+                            "
+                ><a href="udashboard.php">
                         <img src="./img/nav-icons/dashboard.png" class="icon" alt="icon">
                         <span class="link-name">Dashboard</span>
                     </a></li>
@@ -102,10 +107,10 @@ $row1 = $result_image->fetch_assoc();
             <h2>Total</h2>
 
 
-
+            <a href="ustock.php#open_lists">
             <div class="box2 box">
                 <span class="text">Fabric</span>
-                <a href="ustock.php">
+               
                     <span class="number">
                         <?php
                         $query = "SELECT COUNT(*) FROM `fabric`";
@@ -115,14 +120,15 @@ $row1 = $result_image->fetch_assoc();
                         echo $count;
                         ?>
                     </span>
-                </a>
+              
             </div>
+            </a>
 
 
-
+            <a href="ustock.php#open_exports">
             <div class="box1 box">
                 <span class="text">Recent Exports</span>
-                <a href="ustock.php">
+          
                     <span class="number">
                         <?php
                         $query = "SELECT COUNT(*) FROM exports";
@@ -132,8 +138,9 @@ $row1 = $result_image->fetch_assoc();
                         echo $count;
                         ?>
                     </span>
-                </a>
+               
             </div>
+            </a>
 
 
 
@@ -144,8 +151,7 @@ $row1 = $result_image->fetch_assoc();
 
 
     <footer>
-        Created by: FSCS
-
+    FABRIC STOCK - created by FS [BSIT 201]
     </footer>
 
 

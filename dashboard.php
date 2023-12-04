@@ -178,8 +178,7 @@ $row1 = $result_image->fetch_assoc();
 
 
     <footer>
-        Created by: FSCS
-
+        FABRIC STOCK - created by FS [BSIT 201]
     </footer>
 
 
