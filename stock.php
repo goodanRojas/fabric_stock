@@ -119,6 +119,117 @@ $row1 = $result_image->fetch_assoc();
 
     </div>
 
+    <!-- Modal for adding new fabric -->
+
+    <div class="modal fade" id="fabricaddmodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Add fabric data</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form action="includes/add_fabric.php" method="post" enctype="multipart/form-data">
+                    <div class="modal-body">
+                    
+                
+                        
+                    
+                            <label for="type">Type</label>
+                            <input type="text" name="type"class="form-control" id="type" aria-describedby="emailHelp" placeholder="Enter Type of fabric">
+                        
+                            <label for="color">Color</label>
+                            <input type="text" name="color"class="form-control" id="color" aria-describedby="emailHelp" placeholder="Enter fabric color">
+                    
+                            <label for="color">Price</label>
+                            <input type="text" name="price"class="form-control" id="price" aria-describedby="emailHelp" placeholder="Enter fabric Price">
+                    
+                            <label for="caddr">Current address</label>
+                            <input type="text" name="caddr"class="form-control" id="caddr" aria-describedby="emailHelp" placeholder="Enter current stock address ">
+                    
+                            <label for="exampleFormControlFile1">Insert an image</label>
+                            <input type="file" name="image" class="form-control-file" id="exampleFormControlFile1">
+                        
+
+                    
+                                    
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" name="insertdata" class="btn btn-primary">Save Data</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+<!-- DELETE MODAL -->
+<div class="modal fade" id="userdeletemodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Delete fabric data</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="includes/fabric-delete.php" method="post">
+                <div class="modal-body">
+                
+                    <h3>Are you sure you want to delete this data?</h2>
+                    <input type="hidden" name="delete_id" id="delete_id">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit"  name="deletedata" class="btn btn-primary">Delete Data</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- UPDATE/EDIT MODAL -->
+<div class="modal fade" id="fabriceditmodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Edit  fabric data</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form action="includes/edit_fabric.php" method="post" enctype="multipart/form-data">
+        <div class="modal-body">
+        
+       
+            
+          
+                <label for="type">Type</label>
+                <input type="text" name="type"class="form-control" id="type" aria-describedby="emailHelp" placeholder="Enter Type of fabric">
+              
+                <label for="color">Color</label>
+                <input type="text" name="color"class="form-control" id="color" aria-describedby="emailHelp" placeholder="Enter fabric color">
+          
+                <label for="color">Price</label>
+                <input type="text" name="price"class="form-control" id="price" aria-describedby="emailHelp" placeholder="Enter fabric Price">
+          
+                <label for="caddr">Current address</label>
+                <input type="text" name="caddr"class="form-control" id="caddr" aria-describedby="emailHelp" placeholder="Enter current stock address ">
+          
+                <label for="exampleFormControlFile1">Insert an image</label>
+                <input type="file" name="image" class="form-control-file" id="exampleFormControlFile1">
+            
+                <input type="hidden" name="update_id" id="update_id">
+           
+                        
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="submit" name="insertdata" class="btn btn-primary">Save Data</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
 
     <section class="dashboard">
         <div class="top">
@@ -143,11 +254,11 @@ $row1 = $result_image->fetch_assoc();
                         </span>
                         </div>
                     </div>   
-                    <div>
-                        <form action="includes/add_fabric.php" method="post">
-                            <button class="add_fabric" type="submit">Add</button>
-                        </form>
-                    </div>    
+                   
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#fabricaddmodal">
+                        Add Fabric
+                        </button>  
+                    
 
 
                    
@@ -161,9 +272,9 @@ $row1 = $result_image->fetch_assoc();
         </div>
 
         <ul class="table_nav" id="table_nav">
-                        <li><a href="#" id="open_lists" class="fabric_list links">Lists</a></li>
-                        <li><a href="#" id="open_logs" class="fabric_log links">Logs</a></li>
-                        <li><a href="#" id="open_exports" class="fabric_log links">Exports</a></li>
+                        <li><a href="#" id="open_lists" class="fabric_list links" >Lists</a></li>
+                        <li><a href="#" id="open_logs" class="fabric_log links" > Logs</a></li>
+                        <li><a href="#" id="open_exports" class="fabric_log links"  >Exports</a></li>
                     </ul>
 
         <div class="dash-content">
@@ -189,7 +300,7 @@ $row1 = $result_image->fetch_assoc();
 
                             <tbody>
                                 <?php 
-                                    $i = 1;
+                                 
                                     $qry = "SELECT * FROM fabric ORDER BY date_inserted DESC";
                                     $result = $conn->query($qry);
                                     
@@ -198,21 +309,21 @@ $row1 = $result_image->fetch_assoc();
                                         while ($row = $result->fetch_assoc()) {
                                             
                                             echo "<tr>";
-                                            echo "<td>" . $i++ . "</td>";
+                                            echo "<td>" .$row['id'] . "</td>";
                                             echo "<td>" . $row['type'] . "</td>";
                                             echo "<td>" . $row['color'] . "</td>";
                                             echo "<td>" . $row['price'] . "</td>";
                                             echo "<td>" . $row['current_stock_address'] . "</td>";
                                             echo "<td> <img src='img/web/".$row['image_name']."' class='fabric_image'> </td>";
-                                            echo "<td><form method='post' action='includes/fabric-delete.php'>
-                                            <input type='hidden' name='id' value='" . $row['id'] . "'>
-                                            <input type='submit' class='table_btn btn-danger' name='delete_row' value='Delete'>
-                                            </form></td>";
-                                            
-                                            echo "<td><form method='post' action='includes/edit_fabric.php'>
-                                                    <input type='hidden' name='id' value='" . $row['id'] . "'>
-                                                    <input type='submit' class='table_btn btn-safe' value='Update'>
-                                                </form> </td>";
+                                            echo "<td>
+                                                    <button type='button' class='btn btn-success editbtn'> EDIT </button>
+                                                </td>";
+
+                                                
+                                            echo "<td>
+                                                    <button type='button' class='btn btn-danger deletebtn'> DELETE </button>
+                                                </td>";
+
 
                                             
                                             echo "</tr>";
@@ -255,14 +366,69 @@ $row1 = $result_image->fetch_assoc();
 
 
     <footer>
-        Created by: FSCS
+    FABRIC STOCK - created by FS [BSIT 201]
 
     </footer>
    
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-<script src="../jquery-3.7.1.min.js"></script>
+    <script src="jquery-3.7.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+
 
 <script>
+
+
+
+
+
+/* THIS IS FOR DELETING */
+$(document).ready(function(){
+    $(".deletebtn").on('click', function(){
+        $("#userdeletemodal").modal('show');
+
+        // Get the 'id' value from the first <td> in the clicked row
+        var rowId = $(this).closest('tr').find('td:first').text();
+
+        // Set the value of the hidden input
+        $('#delete_id').val(rowId);
+    });
+});
+
+
+$(document).ready(function(){
+    $(".editbtn").on('click', function(){
+        $("#fabriceditmodal").modal('show');
+
+        $tr = $(this).closest('tr');
+
+        var data = $tr.children("td").map(function(){
+            return $(this).text();
+        }).get();
+
+       
+        $('#update_id').val(data[0]);
+
+       
+        $('#type').val(date[1]);
+
+        $('#color').val(data[2]);
+        $('#price').val(data[3]);
+        $('#caddr').val(data[4]);
+        $('#imaga').val(data[5]);
+       
+
+
+
+    });
+});
+
+
+
+
+
+
+
+
 $(document).ready(function(){
     $("#logs-table").hide();
     $("#export-table").hide();
@@ -303,39 +469,6 @@ $(document).ready(function(){
 
 
 </script>
-
-<script>
-  $(document).ready(function () {
-    $("#live-search").keyup(function () {
-        var input = $(this).val();
-         /* alert(input); */    
-
-        if (input != "") {
-           
-            $.ajax({
-                url:'livesearch_user.php',
-                method: 'POST',
-                data: { input : input },
-                
-                success: function (data) {
-                    $("#searchresult").html(data);
-                    $("#data-table").hide();
-                    $("#searchresult").show()
-                   
-                }
-            });
-        } else {
-            $("#searchresult").hide();
-            $("#data-table").show();
-            $("logs_table").hide();
-            $("export-table").hide();
-        }
-    });
-});
-
-</script>
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-
 
 
 <script>
@@ -388,5 +521,167 @@ $(document).ready(function(){
             modal.style.display = "none";
         }
     };
+
+
+/* AJAX FOR LIVE SEARCH */
+$(document).ready(function () {
+    $("#live-search").keyup(function () {
+        var input = $(this).val();
+        console.log('Input:', input); // Add this line for debugging
+
+        if (input != "") {
+            $.ajax({
+                url: 'livesearch_user.php',
+                method: 'POST',
+                data: { Linput: input },
+                success: function (data) {
+                    console.log('Ajax Success:', data); // Add this line for debugging
+                    $("#searchresult").html(data);
+                    $("#data-table").hide();
+                    $("logs_table").hide();
+                     $("export-table").hide();
+                     document.getElementById("open_logs").disabled = true;
+                     document.getElementById("open_exports").disabled = true;
+                     document.getElementById("open_lists").disabled = true;
+   
+                    $("#searchresult").show();
+                },
+                error: function (xhr, status, error) {
+                    console.error('Ajax Error:', error); // Add this line for debugging
+                }
+
+            });
+        } else {
+            $("#searchresult").hide();
+            $("#data-table").show();
+            $("#logs_table").hide();
+            $("#export-table").hide();
+        }
+    });
+});
+
+
+/*     $("#listSearch").keyup(function () {
+        var input = $(this).val();
+        console.log('Input:', input); // Add this line for debugging
+
+        if (input != "") {
+            $.ajax({
+                url: 'livesearch_user.php',
+                method: 'POST',
+                data: { listinput: input },
+                success: function (data) {
+                    console.log('Ajax Success:', data); // Add this line for debugging
+                    $("#searchresult").html(data);
+                    $("#data-table").hide();
+                    $("#searchresult").show();
+                },
+                error: function (xhr, status, error) {
+                    console.error('Ajax Error:', error); // Add this line for debugging
+                }
+            });
+        } else {
+            $("#searchresult").hide();
+            $("#data-table").show();
+            $("logs_table").hide();
+            $("export-table").hide();
+        }
+    });
+ */
+
+
+
+
+/* 
+    $("#logSearch").keyup(function () {
+        var input = $(this).val();
+        console.log('Input:', input); // Add this line for debugging
+
+        if (input != "") {
+            $.ajax({
+                url: 'livesearch_user.php',
+                method: 'POST',
+                data: { loginput: input },
+                success: function (data) {
+                    console.log('Ajax Success:', data); // Add this line for debugging
+                    $("#searchresult").html(data);
+                    $("#data-table").hide();
+                    $("#searchresult").show();
+                },
+                error: function (xhr, status, error) {
+                    console.error('Ajax Error:', error); // Add this line for debugging
+                }
+            });
+        } else {
+            $("#searchresult").hide();
+            $("#data-table").show();
+            $("logs_table").hide();
+            $("export-table").hide();
+        }
+    }); */
+
+
+
+
+
+
+
+    /* $("#exportSearch").keyup(function () {
+        var input = $(this).val();
+        console.log('Input:', input); // Add this line for debugging
+
+        if (input != "") {
+            $.ajax({
+                url: 'livesearch_user.php',
+                method: 'POST',
+                data: { exportinput: input },
+                success: function (data) {
+                    console.log('Ajax Success:', data); // Add this line for debugging
+                    $("#searchresult").html(data);
+                    $("#data-table").hide();
+                    $("#searchresult").show();
+                },
+                error: function (xhr, status, error) {
+                    console.error('Ajax Error:', error); // Add this line for debugging
+                }
+            });
+        } else {
+            $("#searchresult").hide();
+            $("#data-table").show();
+            $("logs_table").hide();
+            $("export-table").hide();
+        }
+    }); 
+});
+
+
+//change the id name in the edit btn
+/* function listBtn() {
+    var inputElement = document.getElementById('live-search');
+    var inputElement = document.getElementById('exportSearch');
+    var inputElement = document.getElementById('logSearch');
+    inputElement.id = 'live-search' + ' listSearch'; // Reset and set the new ID
+    inputElement.name += ' listinput';
+    inputElement.placeholder = 'Search fabric';
+}
+
+function logBtn() {
+    var inputElement = document.getElementById('live-search');
+    var inputElement = document.getElementById('listSearch');
+    var inputElement = document.getElementById('exportSearch');
+    inputElement.id = 'live-search' + ' logSearch'; // Reset and set the new ID
+    inputElement.name += ' loinput';
+    inputElement.placeholder = 'Search logs';
+}
+
+function exportBtn() {
+    var inputElement = document.getElementById('live-search');
+    var inputElement = document.getElementById('listSearch');
+    var inputElement = document.getElementById('logSearch');
+
+    inputElement.id = 'live-search' + ' exportSearch'; // Reset and set the new ID
+    inputElement.name += ' exportInput';
+    inputElement.placeholder = 'Search Exports';
+} */
 
 </script>   

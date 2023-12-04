@@ -57,7 +57,12 @@ $row1 = $result_image->fetch_assoc();
                         <img src="./img/nav-icons/dashboard.png" class="icon" alt="icon">
                         <span class="link-name">Dashboard</span>
                     </a></li>
-                <li><a href="ustock.php">
+                <li
+                style="background-color:#4563c47b;
+                            border-radius: 0 20px 20px 0;
+                            padding: 3px 7px 3px 5px;
+                            "
+                ><a href="ustock.php">
                         <img src="./img/nav-icons/stock.png" class="icon" alt="icon">
                         <span class="link-name">Stocks</span>
                     </a></li>
@@ -98,6 +103,55 @@ $row1 = $result_image->fetch_assoc();
     </div>
 
 
+
+
+
+    <div class="modal fade" id="fabricaddmodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Add fabric data</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form action="includes/add_fabric.php" method="post" enctype="multipart/form-data">
+                    <div class="modal-body">
+                    
+                
+                        
+                    
+                            <label for="type">Type</label>
+                            <input type="text" name="type"class="form-control" id="type" aria-describedby="emailHelp" placeholder="Enter Type of fabric">
+                        
+                            <label for="color">Color</label>
+                            <input type="text" name="color"class="form-control" id="color" aria-describedby="emailHelp" placeholder="Enter fabric color">
+                    
+                            <label for="color">Price</label>
+                            <input type="text" name="price"class="form-control" id="price" aria-describedby="emailHelp" placeholder="Enter fabric Price">
+                    
+                            <label for="caddr">Current address</label>
+                            <input type="text" name="caddr"class="form-control" id="caddr" aria-describedby="emailHelp" placeholder="Enter current stock address ">
+                    
+                            <label for="exampleFormControlFile1">Insert an image</label>
+                            <input type="file" name="image" class="form-control-file" id="exampleFormControlFile1">
+                        
+
+                    
+                                    
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" name="Uinsertdata" class="btn btn-primary">Save Data</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
     <section class="dashboard">
         <div class="top">
                 
@@ -122,9 +176,9 @@ $row1 = $result_image->fetch_assoc();
                         </div>
                     </div>   
                     <div>
-                        <form action="includes/add_fabric.php" method="post">
-                            <button class="add_fabric" type="submit">Add</button>
-                        </form>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#fabricaddmodal">
+                        Add Fabric
+                        </button>  
                     </div>    
 
 
@@ -184,11 +238,11 @@ $row1 = $result_image->fetch_assoc();
                                         
                                             
                                             echo "<td>
-                                            <form method='post' action='uexport.php'>
-                                                <input type='hidden' name='id' value='" . $row['id'] . "'>
-                                                <button type='submit' class='table_btn'>Export</button>
-                                            </form>
-                                          </td>";
+                                                    <form method='post' action='uexport.php'>
+                                                        <input type='hidden' name='id' value='" . $row['id'] . "'>
+                                                        <button type='submit' class='btn btn-success'>Export</button>
+                                                    </form>
+                                                </td>";
                                     
 
                                             
@@ -214,11 +268,11 @@ $row1 = $result_image->fetch_assoc();
                       
                         <div class="success-box">
                             <?php if (isset($_GET['success'])) { ?>
-
-                            <p class="success" id="success"><?php echo $_GET['error']; ?></p>
-
+                                <input type="hidden" class="btn btn-success" id="successbtn" data-bs-toggle="modal" data-bs-target="#successModal">
+                                  
                             <?php } ?>
                         </div>
+
 
                         
                    
@@ -228,17 +282,35 @@ $row1 = $result_image->fetch_assoc();
         </div>    
     </section>
 
-   
+    <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Success!</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Fabric exported succsesfully.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
 
     <footer>
-        Created by: FSCS
-
+    FABRIC STOCK - created by FS [BSIT 201]
     </footer>
    
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-<script src="../jquery-3.7.1.min.js"></script>
+    <script src="jquery-3.7.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+
+
 
 <script>
 $(document).ready(function(){
@@ -261,6 +333,13 @@ $(document).ready(function(){
         $("#export-table").show();
     });
 });
+
+document.addEventListener("DOMContentLoaded", function() {
+    // Your code here
+    var myButton = document.getElementById("successbtn");
+    myButton.click();
+});
+
 
 
 //TODO dapat inig click sa button ma change ang or maadan og class name ang element para maoy stylan
@@ -293,7 +372,7 @@ $(document).ready(function(){
             $.ajax({
                 url:'livesearch_user.php',
                 method: 'POST',
-                data: { input : input },
+                data: { ULinput : input },
                 
                 success: function (data) {
                     $("#searchresult").html(data);

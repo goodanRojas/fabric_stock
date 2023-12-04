@@ -26,6 +26,7 @@ $row1 = $result_image->fetch_assoc();
     <link rel="stylesheet" href="./style/livesearch.css">
     <link rel="stylesheet" href="./style/modal.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
 
     <style>
         .dashboard {
@@ -59,7 +60,7 @@ $row1 = $result_image->fetch_assoc();
             margin-top: 20px;
         }
 
-        .profile-card .table-btn{
+        .profile-card .table-btn {
             background-color: #3498db;
             /* Dark Blue Button Background */
             color: #fff;
@@ -73,6 +74,7 @@ $row1 = $result_image->fetch_assoc();
             cursor: pointer;
             /* Change cursor to pointer on hover */
         }
+
         .personal-logs {
 
 
@@ -145,7 +147,6 @@ $row1 = $result_image->fetch_assoc();
             cursor: pointer;
             /* Change cursor to pointer on hover */
         }
-        
     </style>
 
 
@@ -226,6 +227,82 @@ $row1 = $result_image->fetch_assoc();
     </div>
 
 
+    <div class="modal fade" id="usereditmodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Edit user data</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <?php 
+                    $qry = "SELECT * FROM users WHERE id = $user_id";
+                    $result = mysqli_query($conn, $qry);
+                    $row2 = mysqli_fetch_assoc($result);
+                ?>
+                <form action="includes/edit_user.php" method="post" enctype="multipart/form-data">
+                    <div class="modal-body">
+
+
+                        <div class="input-group">
+                            <span class="input-group-text">First and last name</span>
+                            <input type="text" name="firstname" id="Efname" aria-label="First name"
+                                value="<?php echo $row2['firstname'] ?>" class="form-control">
+                            <input type="text" name="lastname" id="Elname" aria-label="Last name"
+                                value="<?php echo $row2['lastname'] ?>" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Email address</label>
+                            <input type="email" name="email" id="Eemail" class="form-control"
+                                aria-describedby="emailHelp" placeholder="Enter email"
+                                value="<?php echo $row2['email'] ?>">
+
+                        </div>
+                        <div class="form-group">
+                            <label for="contact">Contact</label>
+                            <input type="tel" name="contact" class="form-control" id="Econtact"
+                                aria-describedby="emailHelp" placeholder="Enter Phone number"
+                                value="<?php echo $row2['contact'] ?>">
+
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Password</label>
+                            <input type="password" name="pass" class="form-control" id="Epass" placeholder="Password"
+                                value="<?php echo $row2['pwd'] ?>">
+                        </div>
+                        <div class="form-check">
+                            <h5 class="title">User type</h5>
+                            <input class="form-check-input" name="user_type" type="radio" id="Euser_type"
+                                name="flexRadioDefault" id="flexRadioDefault1" value="1">
+                            <label class="form-check-label" for="flexRadioDefault1">
+                                Admin
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="user_type" id="Euser_type"
+                                name="flexRadioDefault" id="flexRadioDefault2" checked value="2">
+                            <label class="form-check-label" for="flexRadioDefault2">
+                                User
+                            </label>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleFormControlFile1">Insert an image</label>
+                            <input type="file" name="image" class="form-control-file" id="exampleFormControlFile1">
+                        </div>
+
+
+                        <input type="hidden" name="user_id" id="update_id">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" name="inserdata" class="btn btn-primary">Save Data</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <section class="dashboard">
         <div class="profile-card">
             <div class="data-list profile-image">
@@ -265,10 +342,7 @@ $row1 = $result_image->fetch_assoc();
                 </div>
             </div>
 
-
-
-            <input type='submit' class='table-btn' onclick='openUpdate(<?php $row1["id"] ?>)' value='Update'>
-            <>
+            <button type='button' class='btn btn-success editbtn'> EDIT </button>
 
         </div>
 
@@ -302,14 +376,39 @@ $row1 = $result_image->fetch_assoc();
     </section>
 
     <footer>
-        Created by: FSCS
+    FABRIC STOCK - created by FS [BSIT 201] 
 
     </footer>
+    <script src="jquery-3.7.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
 
 </body>
 
 </html>
 <script>
+
+
+    $(document).ready(function () {
+        $(".editbtn").on('click', function () {
+            $("#usereditmodal").modal('show');
+
+            $tr = $(this).closest('tr');
+
+            var data = $tr.children("td").map(function () {
+                return $(this).text();
+            }).get();
+
+
+
+        });
+    });
+
+
+
+
+
     // Get the modal and the buttons
     var modal = document.getElementById("myModal");
     var openModalBtn = document.getElementById("openModalBtn");

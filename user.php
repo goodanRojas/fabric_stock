@@ -27,7 +27,7 @@ $row1 = $result_image->fetch_assoc();
     <!----===== Iconscout CSS ===== -->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <title>Admin Dashboard Panel</title>
+    <title>Profile</title>
 </head>
 
 <body>
@@ -103,6 +103,154 @@ $row1 = $result_image->fetch_assoc();
 
     </div>
 
+<!-- The code below id for adding a new user -->
+    <div class="modal fade" id="useraddmodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Add user data</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form action="includes/add_user.php" method="post" enctype="multipart/form-data">
+        <div class="modal-body">
+        
+       
+            <div class="input-group">
+                <span class="input-group-text">First and last name</span>
+                <input type="text" name="firstname" aria-label="First name" class="form-control">
+                <input type="text" name="lastname" aria-label="Last name" class="form-control">
+             </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Email address</label>
+                <input type="email" name="email"class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                
+            </div>
+            <div class="form-group">
+                <label for="contact">Contact</label>
+                <input type="tel" name="contact"class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Phone number">
+                
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" name="pass" class="form-control" id="exampleInputPassword1" placeholder="Password">
+            </div>
+            <div class="form-check">
+                <h5 class="title">User type</h5>
+                <input class="form-check-input" name="user_type" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="1">
+                <label class="form-check-label" for="flexRadioDefault1">
+                    Admin
+                </label>
+                </div>
+                <div class="form-check">
+                <input class="form-check-input" type="radio" name="user_type" name="flexRadioDefault" id="flexRadioDefault2" checked value="2">
+                <label class="form-check-label" for="flexRadioDefault2">
+                    User
+                </label>
+            </div>
+
+            <div class="form-group">
+                <label for="exampleFormControlFile1">Insert an image</label>
+                <input type="file" name="image" class="form-control-file" id="exampleFormControlFile1">
+            </div>
+
+           
+                        
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="submit" name="inserdata" class="btn btn-primary">Save Data</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- THE CODE BELOW IS FOR EDIT DATA -->
+<div class="modal fade" id="usereditmodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Edit user data</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form action="includes/edit_user_list.php" method="post" enctype="multipart/form-data">
+        <div class="modal-body">
+        
+       
+            <div class="input-group">
+                <span class="input-group-text">First and last name</span>
+                <input type="text" name="firstname" id="Efname" aria-label="First name" class="form-control">
+                <input type="text" name="lastname" id="Elname" aria-label="Last name" class="form-control">
+             </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Email address</label>
+                <input type="email" name="email" id="Eemail" class="form-control"  aria-describedby="emailHelp" placeholder="Enter email">
+                
+            </div>
+            <div class="form-group">
+                <label for="contact">Contact</label>
+                <input type="tel" name="contact"class="form-control" id="Econtact" aria-describedby="emailHelp" placeholder="Enter Phone number">
+                
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" name="pass" class="form-control" id="Epass" placeholder="Password">
+            </div>
+            <div class="form-check">
+                <h5 class="title">User type</h5>
+                <input class="form-check-input" name="user_type" type="radio" id="Euser_type" name="flexRadioDefault" id="flexRadioDefault1" value="1">
+                <label class="form-check-label" for="flexRadioDefault1">
+                    Admin
+                </label>
+                </div>
+                <div class="form-check">
+                <input class="form-check-input" type="radio" name="user_type" id="Euser_type" name="flexRadioDefault" id="flexRadioDefault2" checked value="2">
+                <label class="form-check-label" for="flexRadioDefault2">
+                    User
+                </label>
+            </div>
+
+            <div class="form-group">
+                <label for="exampleFormControlFile1">Insert an image</label>
+                <input type="file" name="image" class="form-control-file" id="exampleFormControlFile1">
+            </div>
+
+           
+            <input type="hidden" name="user_id" id="update_id">
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="submit" name="inserdata" class="btn btn-primary">Save Data</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- DELETE MODAL -->
+<div class="modal fade" id="userdeletemodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Delete user data</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form action="includes/user-delete.php" method="post">
+        <div class="modal-body">
+        
+            <h3>Are you sure you want to delete?</h2>
+            <input type="hidden" name="delete_id" id="delete_id">
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="submit"  name="deletedata" class="btn btn-primary">Delete Data</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
 
 
 
@@ -112,11 +260,9 @@ $row1 = $result_image->fetch_assoc();
                     <input type="text" class="search-box" id="live-search" name="search" autocomplete="off" placeholder="Search User">
 
                     
-                    <div>
-                        <form action="includes/add_user.php" method="post"> <!-- DEREE NATA -->
-                            <button class="add_fabric" type="submit">Add</button>
-                        </form>
-                    </div>    
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#useraddmodal">
+                    Add User
+                    </button>  
 
 
                    
@@ -172,7 +318,7 @@ $row1 = $result_image->fetch_assoc();
                             <tbody>
                                 <?php 
                                     $i = 1;
-                                    $qry = "SELECT id, CONCAT(firstname,' ', lastname) AS name, email, contact, image_name, date_inserted FROM users ORDER BY date_inserted DESC";
+                                    $qry = "SELECT id, CONCAT(firstname,' ', lastname) AS name, email, contact, image_name, date_inserted, pwd , id  FROM users ORDER BY date_inserted DESC";
                                     $result = $conn->query($qry);
                                     
                                     // Check if the query was successful
@@ -180,22 +326,21 @@ $row1 = $result_image->fetch_assoc();
                                         while ($row = $result->fetch_assoc()) {
                                             
                                             echo "<tr>";
-                                            echo "<td>" . $i++ . "</td>";
+                                            echo "<td>" . $row['id'] . "</td>";
                                             echo "<td>" . $row['name'] . "</td>";
                                             echo "<td>" . $row['email'] . "</td>";
                                             echo "<td>" . $row['contact'] . "</td>";
                                             echo "<td> <img src='img/profile_image/".$row['image_name']."' class='fabric_image'> </td>";
+                                            echo "<td>". $row['date_inserted'] ."</td>";
                                         
-                                            echo "<td>" . $row['date_inserted'] . "</td>";
-                                            echo "<td><form method='post' action='includes/user-delete.php'>
-                                            <input type='hidden' name='id' value='" . $row['id'] . "'>
-                                            <input type='submit' class='table_btn btn-danger' name='delete_row' value='Delete'>
-                                            </form></td>";
-                                            
-                                            echo "<td><form method='post' action='includes/edit_user_list.php'>
-                                                    <input type='hidden' name='id' value='" . $row['id'] . "'>
-                                                    <input type='submit' class='table_btn btn-safe' value='Update'>
-                                                </form> </td>";
+                                            echo "<td>
+                                                    <button type='button' class='btn btn-success editbtn'> EDIT </button>
+                                                </td>";
+
+                                                
+                                            echo "<td>
+                                                <button type='button' class='btn btn-danger deletebtn'> DELETE </button>
+                                            </td>";
 
                                             
                                             echo "</tr>";
@@ -235,14 +380,78 @@ $row1 = $result_image->fetch_assoc();
 
 
     <footer>
-        Created by: FSCS
+    FABRIC STOCK - created by FS [BSIT 201]
 
     </footer>
 
-   
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+
+    <script src="jquery-3.7.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
+
+    //for editing the useer
+
+$(document).ready(function(){
+    $(".editbtn").on('click', function(){
+        $("#usereditmodal").modal('show');
+
+        $tr = $(this).closest('tr');
+
+        var data = $tr.children("td").map(function(){
+            return $(this).text();
+        }).get();
+
+       
+        $('#update_id').val(data[0]);
+
+        // Splitting the name into first name and last name
+        var fullName = data[1].split(' ');
+        $('#Efname').val(fullName[0]);
+        $('#Elname').val(fullName[1]);
+
+        $('#Eemail').val(data[2]);
+        $('#Econtact').val(data[3]);
+        $('#Epass').val(data[4]);
+        $('#Euser_type').val(data[5]);
+
+
+
+    });
+});
+
+
+/* THIS IS FOR DELETING */
+$(document).ready(function(){
+    $(".deletebtn").on('click', function(){
+        $("#userdeletemodal").modal('show');
+
+        // Get the 'id' value from the first <td> in the clicked row
+        var rowId = $(this).closest('tr').find('td:first').text();
+
+        // Set the value of the hidden input
+        $('#delete_id').val(rowId);
+    });
+});
+
+
+
+
+
+
+</script>
+
+
+</body>
+</html>
+
+   
+
+<script>
+
+
 $(document).ready(function(){
     $("#logs-table").hide();
     $("#export-table").hide();
@@ -265,27 +474,24 @@ $(document).ready(function(){
 });
 
 
-//TODO dapat inig click sa button ma change ang or maadan og class name ang element para maoy stylan
+$(document).ready(function() {
+        // Function to log actions via Ajax
+        function logAction(userId, action) {
+            $.ajax({
+                type: 'POST',
+                url: 'log_action.php', // Replace with the actual path to your PHP file
+                data: { userId: userId, action: action },
+                success: function(response) {
+                    console.log('Action logged successfully');
+                },
+                error: function(error) {
+                    console.error('Error logging action:', error);
+                }
+            });
+        }
 
-/* 
-    var input = document.querySelector('.input');
-      input.addEventListener('click', function () {
-         input.classList.add('active');
-      });
-      document.addEventListener('click', function (event) {
-         if (event.target !== input)
-         input.classList.remove('active');
-      });
-
-*/
-
-
-
-
-</script>
-
-<script>
-  $(document).ready(function () {
+//LIVE SEARCH
+        $(document).ready(function () {
     $("#live-search").keyup(function () {
         var input = $(this).val();
          /* alert(input); */    
@@ -313,38 +519,14 @@ $(document).ready(function(){
     });
 });
 
-</script>
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-
-<script>
-    $(document).ready(function() {
-        // Function to log actions via Ajax
-        function logAction(userId, action) {
-            $.ajax({
-                type: 'POST',
-                url: 'log_action.php', // Replace with the actual path to your PHP file
-                data: { userId: userId, action: action },
-                success: function(response) {
-                    console.log('Action logged successfully');
-                },
-                error: function(error) {
-                    console.error('Error logging action:', error);
-                }
-            });
-        }
-
         // Example usage
         var userId = 1; // Replace with the actual user ID
         var action = "User clicked a button"; // Replace with the actual action
 
         logAction(userId, action);
     });
-</script>
-</body>
-</html>
 
 
-<script>
     // Get the modal and the buttons
     var modal = document.getElementById("myModal");
     var openModalBtn = document.getElementById("openModalBtn");
@@ -366,5 +548,8 @@ $(document).ready(function(){
             modal.style.display = "none";
         }
     };
+
+
+
 
 </script>

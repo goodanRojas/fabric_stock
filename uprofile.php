@@ -170,7 +170,12 @@ $row1 = $result_image->fetch_assoc();
                         <span class="link-name">Stocks</span>
                     </a></li>
 
-                <li><a href="uprofile.php">
+                <li
+                style="background-color:#4563c47b;
+                            border-radius: 0 20px 20px 0;
+                            padding: 3px 7px 3px 5px;
+                            "
+                ><a href="uprofile.php">
                         <img src="./img/nav-icons/account.png" class="icon" alt="icon">
                         <span class="link-name">Profile</span>
                     </a></li>
@@ -281,7 +286,7 @@ $row1 = $result_image->fetch_assoc();
     </section>
 
     <footer>
-        Created by: FSCS
+    FABRIC STOCK - created by FS [BSIT 201]
 
     </footer>
 
